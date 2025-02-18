@@ -102,16 +102,20 @@ const AdminProductDialog = ({ isOpen, onClose, onSubmit }: AdminProductDialogPro
 
           <div>
             <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-900 mb-1">
-              图片URL
+              图片路径
             </label>
             <input
-              type="url"
+              type="text"
               id="imageUrl"
               value={formData.imageUrl}
               onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+              placeholder="支持本地路径（如：products/filter1.jpg）或完整URL"
               required
             />
+            <p className="mt-1 text-sm text-gray-500">
+              本地图片请放在 public 目录下，直接输入相对路径；外部图片请输入完整 URL
+            </p>
           </div>
 
           <div className="flex justify-end space-x-3 mt-6">

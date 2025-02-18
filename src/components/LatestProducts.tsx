@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import FadeIn from './FadeIn'
 
 interface Product {
@@ -51,7 +52,7 @@ export default function LatestProducts() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product, index) => (
               <FadeIn key={product._id} delay={index * 200}>
-                <div className="group bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-gray-50 h-full flex flex-col cursor-pointer">
+                <div className="group bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-gray-50 h-full flex flex-col">
                   <div className="relative w-full pt-[75%] rounded-t-lg overflow-hidden bg-gray-100">
                     <Image
                       src={product.imageUrl.startsWith('http') 
@@ -69,9 +70,17 @@ export default function LatestProducts() {
                     <p className="text-sm text-gray-500 line-clamp-2 flex-1 group-hover:text-gray-600 transition-colors duration-300">
                       {product.description}
                     </p>
-                    <p className="mt-4 text-lg font-medium text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
-                      {product.price}
-                    </p>
+                    <div className="mt-4 flex items-center justify-between">
+                      <p className="text-lg font-medium text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
+                        {product.price}
+                      </p>
+                      <Link
+                        href={`/products/${product._id}`}
+                        className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
+                      >
+                        查看详情
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </FadeIn>
