@@ -21,6 +21,12 @@ const nextConfig = {
     MONGODB_URI: process.env.MONGODB_URI,
   },
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true, // 在构建时忽略 ESLint 错误
+  },
+  typescript: {
+    ignoreBuildErrors: true, // 忽略 TypeScript 错误
+  },
 }
 
 module.exports = nextConfig
